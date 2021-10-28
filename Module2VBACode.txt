@@ -1,3 +1,4 @@
+
 Sub DQAnalysis()
 
     Worksheets("DQ Analysis").Activate
@@ -27,3 +28,619 @@ Sub DQAnalysis()
     Cells(4, 2).Value = totalVolume
         'adds totalVolume count to cell B4 in DQ Analysis sheet
         'adds year (2018) to cell A4
+                   
+End Sub
+
+Sub MacroCheck()
+
+    Dim testmessage As String
+
+    testmessage = "Hello World!"
+
+    MsgBox (testmessage)
+
+End Sub
+
+Sub DQAnalysis()
+
+    Worksheets("DQ Analysis").Activate
+    
+    Range("A1").Value = "DAQO (Ticker: DQ)"
+    
+    'Create a header row
+    Cells(3, 1).Value = "Years"
+    Cells(3, 2).Value = "Total Daily Volume"
+    Cells(3, 3).Value = "Return"
+    
+    'sets variable values
+    rowStart = 2
+    rowEnd = 3013
+    totalVolume = 0
+    
+    'Select correct worksheet to pull data from
+    Worksheets("2018").Activate
+        
+    'for loop to count total volume
+    For i = rowStart To rowEnd
+        'increase totalVolume
+        totalVolume = totalVolume + Cells(i, 8).Value
+        MsgBox (totalVolume)
+    Next i
+
+                   
+End Sub
+
+Sub CountRows ()
+	With Worksheets("2018")
+	lastRow = .Cells(.Rows.Count, "A").End(xlup).Row
+	End With
+End Sub
+
+
+
+Sub DQAnalysis()
+
+    Worksheets("DQ Analysis").Activate
+    
+    Range("A1").Value = "DAQO (Ticker: DQ)"
+    
+    'Create a header row
+    Cells(3, 1).Value = "Years"
+    Cells(3, 2).Value = "Total Daily Volume"
+    Cells(3, 3).Value = "Return"
+    
+    Worksheets("2018").Activate
+    rowStart = 2
+    With Worksheets("2018")
+    rowEnd = .Cells(.Rows.Count, "A").End(xlUp).Row
+    End With
+            'sets rowEnd to equal last row in column A that that holds data
+    totalVolume = 0
+        
+    For i = rowStart To rowEnd
+        'increase totalVolume if ticker is "DQ
+        If Cells(i, 1).Value = "DQ" Then
+            totalVolume = totalVolume + Cells(i, 8).Value
+        End If
+        
+    Next i
+          
+    Worksheets("DQ Analysis").Activate
+    Cells(4, 1).Value = 2018
+    Cells(4, 2).Value = totalVolume
+        'adds totalVolume count to cell B4 in DQ Analysis sheet
+        'adds year (2018) to cell A4
+                   
+End Sub
+
+Sub DQAnalysis()
+
+    Worksheets("DQ Analysis").Activate
+    
+    Range("A1").Value = "DAQO (Ticker: DQ)"
+    
+    'Create a header row
+    Cells(3, 1).Value = "Years"
+    Cells(3, 2).Value = "Total Daily Volume"
+    Cells(3, 3).Value = "Return"
+    
+    Worksheets("2018").Activate
+    
+    'Set initial Volume to 0
+    totalVolume = 0
+    
+    Dim startingPrice As Double
+    Dim endingPrice As Double
+    
+    'Establish number of rows to loop over
+    rowStart = 2
+    'DELETE: rowEnd = 3013
+    'DELETE: With Worksheets("2018); rowEnd = .Cells(.Rows.Count, "A").End(xlup).Row; End With
+    rowEnd = Cells(Rows.Count, "A").End(xlUp).Row
+        'sets rowEnd to equal last row in column A that that holds data.
+        'From: https://stackoverflow.com/questions/18088729/row-count-where-data-exists
+    
+    'Loop over all rows
+    For i = rowStart To rowEnd
+        'increase totalVolume if ticker is "DQ
+        If Cells(i, 1).Value = "DQ" Then
+            totalVolume = totalVolume + Cells(i, 8).Value
+        End If
+        
+        If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
+            startingPrice = Cells(i, 3).Value
+        End If
+        
+        If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
+            endingPrice = Cells(i, 6).Value
+        End If
+        
+    Next i
+          
+    Worksheets("DQ Analysis").Activate
+    Cells(4, 1).Value = 2018
+    Cells(4, 2).Value = totalVolume
+    Cells(4, 3).Value = endingPrice / startingPrice - 1
+        'adds totalVolume count to cell B4 in DQ Analysis sheet
+        'adds year (2018) to cell A4
+                   
+End Sub
+
+Range("A1").Value = "All Stocks (2018)"
+    
+    'Create a header row
+    Cells(3, 1).Value = "Years"
+    Cells(3, 2).Value = "Total Daily Volume"
+    Cells(3, 3).Value = "Return"
+       
+    Dim ticker(11) As String
+    
+    tickers(0) = "AY"
+    tickers(1) = "CSIQ"
+    tickers(2) = "DQ"
+    tickers(3) = "ENPH"
+    tickers(4) = "FSLR"
+    tickers(5) = "HASI"
+    tickers(6) = "JKS"
+    tickers(7) = "RUN"
+    tickers(8) = "SEDG"
+    tickers(9) = "SPWR"
+    tickers(10) = "TERP"
+    tickers(11) = "VSLR"
+
+    
+    Worksheets("2018").Activate
+
+
+Sub AllStocksAnalysis()
+
+Worksheets("All Stocks Analysis").Activate
+    
+    For i = 1 To 10
+    
+        For j = 1 To 10
+    
+            Cells(i, j) = 1
+        
+        Next j
+        
+    Next i
+    
+
+End Sub
+
+Sub AllStocksAnalysis()
+
+Worksheets("All Stocks Analysis").Activate
+
+Range("A1").Value = "All Stocks (2018)"
+    
+    'Create a header row
+    Cells(3, 1).Value = "Years"
+    Cells(3, 2).Value = "Total Daily Volume"
+    Cells(3, 3).Value = "Return"
+    
+    Worksheets("2018").Activate
+    
+    'Create Array of for all stocks
+    Dim tickers(11) As String
+    
+    Dim startingPrice As Double
+    Dim endingPrice As Double
+    
+    'Set index for each stock
+    tickers(0) = "AY"
+    tickers(1) = "CSIQ"
+    tickers(2) = "DQ"
+    tickers(3) = "ENPH"
+    tickers(4) = "FSLR"
+    tickers(5) = "HASI"
+    tickers(6) = "JKS"
+    tickers(7) = "RUN"
+    tickers(8) = "SEDG"
+    tickers(9) = "SPWR"
+    tickers(10) = "TERP"
+    tickers(11) = "VSLR"
+    
+    AYVolume = 0
+    CSIQVolume = 0
+    DQVolume = 0
+    ENPHVolume = 0
+    FSLRVolume = 0
+    HASIVolume = 0
+    JKSVolume = 0
+    RUNVolume = 0
+    SEDGVolume = 0
+    SPWRVolume = 0
+    TERPVolume = 0
+    VSLRVolume = 0
+    
+    rowStart = 2
+    rowEnd = Cells(Rows.Count, "A").End(xlUp).Row
+    
+    For i = rowStart To rowEnd
+    
+        If Cells(i, 1).Value = tickers(0) Then
+        AYVolume = AYVolume + Cells(i, 8).Value
+        End If
+        
+        If Cells(i, 1).Value = tickers(1) Then
+        CSIQVolume = CSIQVolume + Cells(i, 8).Value
+        End If
+        
+        If Cells(i, 1).Value = tickers(2) Then
+        DQVolume = DQVolume + Cells(i, 8).Value
+        End If
+        
+        If Cells(i, 1).Value = tickers(3) Then
+        ENPHVolume = ENPHVolume + Cells(i, 8).Value
+        End If
+        
+        If Cells(i, 1).Value = tickers(4) Then
+        FSLRVolume = FSLRVolume + Cells(i, 8).Value
+        End If
+        
+        If Cells(i, 1).Value = tickers(5) Then
+        HASIVolume = HASIVolume + Cells(i, 8).Value
+        End If
+        
+        If Cells(i, 1).Value = tickers(6) Then
+        JKSVolume = JKSVolume + Cells(i, 8).Value
+        End If
+        
+        If Cells(i, 1).Value = tickers(7) Then
+        RUNVolume = RUNVolume + Cells(i, 8).Value
+        End If
+        
+        If Cells(i, 1).Value = tickers(8) Then
+        SEDGVolume = SEDGVolume + Cells(i, 8).Value
+        End If
+        
+        If Cells(i, 1).Value = tickers(9) Then
+        SPWRVolume = SPWRVolume + Cells(i, 8).Value
+        End If
+        
+        If Cells(i, 1).Value = tickers(10) Then
+        TERPVolume = TERPVolume + Cells(i, 8).Value
+        End If
+        
+        If Cells(i, 1).Value = tickers(11) Then
+        VSLRVolume = VSLRVolume + Cells(i, 8).Value
+        End If
+    
+    
+ Next i
+Worksheets("All Stocks Analysis").Activate
+Cells(4, 2).Value = AYVolume
+Cells(5, 2).Value = CSIQVolume
+Cells(6, 2).Value = DQVolume
+Cells(7, 2).Value = ENPHVolume
+Cells(8, 2).Value = FSLRVolume
+Cells(9, 2).Value = HASIVolume
+Cells(10, 2).Value = JKSVolume
+Cells(11, 2).Value = RUNVolume
+Cells(12, 2).Value = SEDGVolume
+Cells(13, 2).Value = SPWRVolume
+Cells(14, 2).Value = TERPVolume
+Cells(15, 2).Value = VSLRVolume
+Range("A4:A15").Value = 2018
+
+
+
+
+
+
+
+End Sub
+
+Sub AllStocksAnalysis()
+
+Worksheets("All Stocks Analysis").Activate
+
+Range("A1").Value = "All Stocks (2018)"
+    
+    'Create a header row
+    Cells(3, 1).Value = "Years"
+    Cells(3, 2).Value = "Total Daily Volume"
+    Cells(3, 3).Value = "Return"
+    
+    Worksheets("2018").Activate
+    
+    'Create Array of for all stocks
+    Dim tickers(11) As String
+    
+    Dim startingPriceAY As Double
+    Dim endingPriceAY As Double
+    
+    Dim startingPriceCSIQ As Double
+    Dim endingPriceCSIQ As Double
+    
+    Dim startingPriceDQ As Double
+    Dim endingPriceDQ As Double
+    
+    Dim startingPriceENPH As Double
+    Dim endingPriceENPH As Double
+    
+    Dim startingPriceFSLR As Double
+    Dim endingPriceFSLR As Double
+    
+    Dim startingPriceHASI As Double
+    Dim endingPriceHASI As Double
+    
+    Dim startingPriceJKS As Double
+    Dim endingPriceJKS As Double
+    
+    Dim startingPriceRUN As Double
+    Dim endingPriceRUN As Double
+    
+    Dim startingPriceSEDG As Double
+    Dim endingPriceSEDG As Double
+    
+    Dim startingPriceSPWR As Double
+    Dim endingPriceSPWR As Double
+    
+    Dim startingPriceTERP As Double
+    Dim endingPriceTERP As Double
+    
+    Dim startingPriceVSLR As Double
+    Dim endingPriceVSLR As Double
+    
+    'Set index for each stock
+    tickers(0) = "AY"
+    tickers(1) = "CSIQ"
+    tickers(2) = "DQ"
+    tickers(3) = "ENPH"
+    tickers(4) = "FSLR"
+    tickers(5) = "HASI"
+    tickers(6) = "JKS"
+    tickers(7) = "RUN"
+    tickers(8) = "SEDG"
+    tickers(9) = "SPWR"
+    tickers(10) = "TERP"
+    tickers(11) = "VSLR"
+    
+    AYVolume = 0
+    CSIQVolume = 0
+    DQVolume = 0
+    ENPHVolume = 0
+    FSLRVolume = 0
+    HASIVolume = 0
+    JKSVolume = 0
+    RUNVolume = 0
+    SEDGVolume = 0
+    SPWRVolume = 0
+    TERPVolume = 0
+    VSLRVolume = 0
+    
+    rowStart = 2
+    rowEnd = Cells(Rows.Count, "A").End(xlUp).Row
+    
+    For i = rowStart To rowEnd
+    
+        If Cells(i, 1).Value = tickers(0) Then
+        AYVolume = AYVolume + Cells(i, 8).Value
+        End If
+        
+        If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
+            startingPrice = Cells(i, 3).Value
+        End If
+        
+        If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
+            endingPrice = Cells(i, 6).Value
+        End If
+        
+        If Cells(i, 1).Value = tickers(1) Then
+        CSIQVolume = CSIQVolume + Cells(i, 8).Value
+        End If
+        
+        If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
+            startingPrice = Cells(i, 3).Value
+        End If
+        
+        If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
+            endingPrice = Cells(i, 6).Value
+        End If
+        
+        If Cells(i, 1).Value = tickers(2) Then
+        DQVolume = DQVolume + Cells(i, 8).Value
+        End If
+        
+        If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
+            startingPrice = Cells(i, 3).Value
+        End If
+        
+        If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
+            endingPrice = Cells(i, 6).Value
+        End If
+        
+        If Cells(i, 1).Value = tickers(3) Then
+        ENPHVolume = ENPHVolume + Cells(i, 8).Value
+        End If
+        
+        If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
+            startingPrice = Cells(i, 3).Value
+        End If
+        
+        If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
+            endingPrice = Cells(i, 6).Value
+        End If
+        
+        If Cells(i, 1).Value = tickers(4) Then
+        FSLRVolume = FSLRVolume + Cells(i, 8).Value
+        End If
+        
+        If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
+            startingPrice = Cells(i, 3).Value
+        End If
+        
+        If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
+            endingPrice = Cells(i, 6).Value
+        End If
+        
+        If Cells(i, 1).Value = tickers(5) Then
+        HASIVolume = HASIVolume + Cells(i, 8).Value
+        End If
+        
+        If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
+            startingPrice = Cells(i, 3).Value
+        End If
+        
+        If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
+            endingPrice = Cells(i, 6).Value
+        End If
+        
+        If Cells(i, 1).Value = tickers(6) Then
+        JKSVolume = JKSVolume + Cells(i, 8).Value
+        End If
+        
+        If Cells(i, 1).Value = tickers(7) Then
+        RUNVolume = RUNVolume + Cells(i, 8).Value
+        End If
+        
+        If Cells(i, 1).Value = tickers(8) Then
+        SEDGVolume = SEDGVolume + Cells(i, 8).Value
+        End If
+        
+        If Cells(i, 1).Value = tickers(9) Then
+        SPWRVolume = SPWRVolume + Cells(i, 8).Value
+        End If
+        
+        If Cells(i, 1).Value = tickers(10) Then
+        TERPVolume = TERPVolume + Cells(i, 8).Value
+        End If
+        
+        If Cells(i, 1).Value = tickers(11) Then
+        VSLRVolume = VSLRVolume + Cells(i, 8).Value
+        End If
+    
+    
+ Next i
+Worksheets("All Stocks Analysis").Activate
+Cells(4, 2).Value = AYVolume
+Cells(5, 2).Value = CSIQVolume
+Cells(6, 2).Value = DQVolume
+Cells(7, 2).Value = ENPHVolume
+Cells(8, 2).Value = FSLRVolume
+Cells(9, 2).Value = HASIVolume
+Cells(10, 2).Value = JKSVolume
+Cells(11, 2).Value = RUNVolume
+Cells(12, 2).Value = SEDGVolume
+Cells(13, 2).Value = SPWRVolume
+Cells(14, 2).Value = TERPVolume
+Cells(15, 2).Value = VSLRVolume
+Range("A4:A15").Value = 2018
+
+
+
+
+
+
+
+End Sub
+Sub AllStocksAnalysis()
+'1.  Format the output sheet on the "All Stocks Analysis" worksheet
+Worksheets("All Stocks Analysis").Activate
+
+Range("A1").Value = "All Stocks (2018)"
+    
+    'Create a header row
+    Cells(3, 1).Value = "Stock"
+    Cells(3, 2).Value = "Total Daily Volume"
+    Cells(3, 3).Value = "Return"
+    
+    '2.  Initialize an array of all tickers.
+    Dim tickers(11) As String
+        
+    '2.  Initialize an array of all tickers.
+    tickers(0) = "AY"
+    tickers(1) = "CSIQ"
+    tickers(2) = "DQ"
+    tickers(3) = "ENPH"
+    tickers(4) = "FSLR"
+    tickers(5) = "HASI"
+    tickers(6) = "JKS"
+    tickers(7) = "RUN"
+    tickers(8) = "SEDG"
+    tickers(9) = "SPWR"
+    tickers(10) = "TERP"
+    tickers(11) = "VSLR"
+    
+    'a.  Initialize variables for the starting price and ending price.
+    Dim startingPrice As Single
+    Dim endingPrice As Single
+    
+    'b.  Activate the data worksheet.
+    Worksheets("2018").Activate
+    
+    'c.  Find the number of rows to loop over.
+    rowStart = 2
+    rowEnd = Cells(Rows.Count, "A").End(xlUp).Row
+        
+    '4.  Loop through the tickers.
+    For i = 0 To 11
+        
+        ticker = tickers(i)
+        totalVolume = 0
+    
+        '5.  Loop through rows in the data.
+        Worksheets("2018").Activate
+        For j = 2 To rowEnd
+        
+        'a.  Find the total volume for the current ticker.
+        If Cells(j, 1).Value = ticker Then
+            totalVolume = totalVolume + Cells(j, 8).Value
+        End If
+        
+        'b.  Find the starting price for the current ticker.
+        If Cells(j - 1, 1).Value <> ticker And Cells(j, 1).Value = ticker Then
+            startingPrice = Cells(j, 3).Value
+        End If
+        
+        'c.  Find the ending price for the current ticker.
+        If Cells(j - 1, 1).Value <> ticker And Cells(j, 1).Value = ticker Then
+            endingPrice = Cells(j, 6).Value
+        End If
+
+            
+        Next j
+        
+    
+        '6.  Output the data for the current ticker.
+        Worksheets("All Stocks Analysis").Activate
+        Cells(4 + i, 1).Value = ticker
+        Cells(4 + i, 2).Value = totalVolume
+        Cells(4 + i, 3).Value = endingPrice / startingPrice - 1
+    Next i
+ 
+
+End Sub
+
+
+Sub formatAllStocksAnalysisTabel()
+
+    'Formatting
+    Worksheets("All Stocks Analysis").Activate
+    With Range("A3:C3").Font
+    .Bold = True
+    .Color = RGB(500, 100, 300)
+    .Size = 14
+    .Underline = xlUnderlineStyleDouble
+    End With
+    
+    Range("A3:C3").Borders(xlEdgeBottom).LineStyle = xlContinuous
+    
+    Range("B4:B15").NumberFormat = "#,###,###"
+    Range("C4:C15").NumberFormat = "0.0%"
+    
+    Columns("B").AutoFit
+    Columns("C").AutoFit
+    
+    Worksheets("2018").Activate
+    rowStart = 2
+    rowEnd = Cells(Rows.Count, "C").End(xlUp).Row
+    
+    For i = rowStart To rowEnd
+        Cells(i, 3).NumberFormat = "$#,###.##"
+    Next i
+
+End Sub

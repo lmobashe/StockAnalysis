@@ -642,5 +642,90 @@ Sub formatAllStocksAnalysisTabel()
     For i = rowStart To rowEnd
         Cells(i, 3).NumberFormat = "$#,###.##"
     Next i
+    
+    Worksheets("All Stocks Analysis").Activate
+    
+    If Cells(4, 3) > 0 Then
+        Cells(4, 3).Interior.Color = vbGreen
+    ElseIf Cells(4, 3) < 0 Then
+        Cells(4, 3).Interior.Color = vbRed
+    Else: Cells(4, 3).Interior.Color = xlNone
+    End If
+
+End Sub
+
+Sub formatAllStocksAnalysisTabel()
+
+    'Formatting
+    Worksheets("All Stocks Analysis").Activate
+    With Range("A3:C3").Font
+    .Bold = True
+    .Color = RGB(500, 100, 300)
+    .Size = 14
+    .Underline = xlUnderlineStyleDouble
+    End With
+    
+    Range("A3:C3").Borders(xlEdgeBottom).LineStyle = xlContinuous
+    
+    Range("B4:B15").NumberFormat = "#,###,###"
+    Range("C4:C15").NumberFormat = "0.0%"
+    
+    Columns("B").AutoFit
+    Columns("C").AutoFit
+    
+    Worksheets("2018").Activate
+    rowStart = 2
+    rowEnd = Cells(Rows.Count, "C").End(xlUp).Row
+    
+    For i = rowStart To rowEnd
+        Cells(i, 3).NumberFormat = "$#,###.##"
+    Next i
+    
+    Worksheets("All Stocks Analysis").Activate
+    
+    rowStart = 4
+    rowEnd = Cells(Rows.Count, "A").End(xlUp).Row
+    
+    For i = rowStart To rowEnd
+        
+        If Cells(i, 3) > 0 Then
+            Cells(i, 3).Interior.Color = vbGreen
+            
+        ElseIf Cells(i, 3) < 0 Then
+            Cells(i, 3).Interior.Color = vbRed
+            
+        Else: Cells(i, 3).Interior.Color = xlNone
+        
+        End If
+    Next i
+    
+End Sub
+
+Sub CheckerBoard()
+
+Worksheets("All Stocks Analysis").Activate
+    
+    
+    For i = 20 To 28
+    
+    For j = 5 To 13
+        
+        If (i Mod 2 = 0) And (j Mod 2 <> 0) Then
+            Cells(i, j).Interior.Color = vbGreen
+            
+        ElseIf (i Mod 2 <> 0) And (j Mod 2 <> 0) Then
+            Cells(i, j).Interior.Color = vbRed
+        
+        ElseIf (i Mod 2 = 0) And (j Mod 2 = 0) Then
+            Cells(i, j).Interior.Color = vbRed
+            
+        ElseIf (i Mod 2 <> 0) And (j Mod 2 = 0) Then
+            Cells(i, j).Interior.Color = vbGreen
+                    
+        End If
+        
+    Next j
+    
+    Next i
 
 End Sub

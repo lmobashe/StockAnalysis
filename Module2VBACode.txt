@@ -148,10 +148,10 @@ Sub DQAnalysis()
         End If
         
         If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
-            startingPrice = Cells(i, 3).Value
+            startingPrice = Cells(i, 6).Value
         End If
         
-        If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
+        If Cells(i, 1).Value = "DQ" And Cells(i + 1, 1).Value <> "DQ" Then
             endingPrice = Cells(i, 6).Value
         End If
         
@@ -422,10 +422,10 @@ Range("A1").Value = "All Stocks (2018)"
         End If
         
         If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
-            startingPrice = Cells(i, 3).Value
+            startingPrice = Cells(i, 6).Value
         End If
         
-        If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
+        If Cells(i, 1).Value = "DQ" And Cells(i + 1, 1).Value <> "DQ" Then
             endingPrice = Cells(i, 6).Value
         End If
         
@@ -434,10 +434,10 @@ Range("A1").Value = "All Stocks (2018)"
         End If
         
         If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
-            startingPrice = Cells(i, 3).Value
+            startingPrice = Cells(i, 6).Value
         End If
         
-        If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
+        If Cells(i, 1).Value = "DQ" And Cells(i + 1, 1).Value <> "DQ" Then
             endingPrice = Cells(i, 6).Value
         End If
         
@@ -446,10 +446,10 @@ Range("A1").Value = "All Stocks (2018)"
         End If
         
         If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
-            startingPrice = Cells(i, 3).Value
+            startingPrice = Cells(i, 6).Value
         End If
         
-        If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
+        If Cells(i, 1).Value = "DQ" And Cells(i + 1, 1).Value <> "DQ" Then
             endingPrice = Cells(i, 6).Value
         End If
         
@@ -458,10 +458,10 @@ Range("A1").Value = "All Stocks (2018)"
         End If
         
         If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
-            startingPrice = Cells(i, 3).Value
+            startingPrice = Cells(i, 6).Value
         End If
         
-        If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
+        If Cells(i, 1).Value = "DQ" And Cells(i + 1, 1).Value <> "DQ" Then
             endingPrice = Cells(i, 6).Value
         End If
         
@@ -470,10 +470,10 @@ Range("A1").Value = "All Stocks (2018)"
         End If
         
         If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
-            startingPrice = Cells(i, 3).Value
+            startingPrice = Cells(i, 6).Value
         End If
         
-        If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
+        If Cells(i, 1).Value = "DQ" And Cells(i + 1, 1).Value <> "DQ" Then
             endingPrice = Cells(i, 6).Value
         End If
         
@@ -482,10 +482,10 @@ Range("A1").Value = "All Stocks (2018)"
         End If
         
         If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
-            startingPrice = Cells(i, 3).Value
+            startingPrice = Cells(i, 6).Value
         End If
         
-        If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
+        If Cells(i, 1).Value = "DQ" And Cells(i + 1, 1).Value <> "DQ" Then
             endingPrice = Cells(i, 6).Value
         End If
         
@@ -593,11 +593,11 @@ Range("A1").Value = "All Stocks (2018)"
         
         'b.  Find the starting price for the current ticker.
         If Cells(j - 1, 1).Value <> ticker And Cells(j, 1).Value = ticker Then
-            startingPrice = Cells(j, 3).Value
+            startingPrice = Cells(j, 6).Value
         End If
         
         'c.  Find the ending price for the current ticker.
-        If Cells(j - 1, 1).Value <> ticker And Cells(j, 1).Value = ticker Then
+        If Cells(j + 1, 1).Value <> ticker And Cells(j, 1).Value = ticker Then
             endingPrice = Cells(j, 6).Value
         End If
 
@@ -789,11 +789,11 @@ Sub AnyYearAnalysis()
         
         'b.  Find the starting price for the current ticker.
         If Cells(j - 1, 1).Value <> ticker And Cells(j, 1).Value = ticker Then
-            startingPrice = Cells(j, 3).Value
+            startingPrice = Cells(j, 6).Value
         End If
         
         'c.  Find the ending price for the current ticker.
-        If Cells(j - 1, 1).Value <> ticker And Cells(j, 1).Value = ticker Then
+        If Cells(j + 1, 1).Value <> ticker And Cells(j, 1).Value = ticker Then
             endingPrice = Cells(j, 6).Value
         End If
 
@@ -805,7 +805,7 @@ Sub AnyYearAnalysis()
         Worksheets("Any Year Stocks Analysis").Activate
         Cells(4 + i, 1).Value = ticker
         Cells(4 + i, 2).Value = totalVolume
-        Cells(4 + i, 3).Value = endingPrice / startingPrice - 1
+        Cells(4 + i, 3).Value = startingPrice / endingPrice  - 1
     Next i
     
     Worksheets("Any Year Stocks Analysis").Activate

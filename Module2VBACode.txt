@@ -607,7 +607,7 @@ Range("A1").Value = "All Stocks (2018)"
     
         '6.  Output the data for the current ticker.
         Worksheets("All Stocks Analysis").Activate
-        Cells(4 + i, 1).Value = ticker
+        Cells(4 + i, 1).Value = tickers
         Cells(4 + i, 2).Value = totalVolume
         Cells(4 + i, 3).Value = endingPrice / startingPrice - 1
     Next i

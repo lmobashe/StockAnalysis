@@ -2,7 +2,7 @@
 
 ## Overview of Project
 
-Steve has asked me to write a code to analyze stock data he provided me. Using VBA I wrote a set of macros that allowed Steve to compare the performance of various stocks based on the data provided. Steve wants to be able to perform a similar analysis on all stock market data. To accomadate so much data I am refactoring my original code to see if I can make the macros run more quickly.
+Steve has asked me to write a code to analyze stock data he provided me. Using VBA, I wrote a set of macros that allowed Steve to compare the performance of various stocks based on the data provided. Steve wants to be able to perform a similar analysis on all stock market data. To accommodate so much data I am refactoring my original code to see if I can make the macros run more quickly.
 
 ## Results
 
@@ -296,7 +296,7 @@ End Sub
 ```
 ````
 
-After refactoring the code the run time for the 2017 data was 0.1953125 seconds. This is an improved run time of 580%.
+After refactoring the code, the run time for the 2017 data was 0.1953125 seconds. This is an improved run time of 580%.
 
 ![Refactored_Code_2017_RunTime](https://github.com/lmobashe/StockAnalysis/blob/main/Resources/Refactored_Code_2017_RunTime.PNG)
 
@@ -310,12 +310,12 @@ The refactored run time for the 2018 data was 0.1875. This is an improved run ti
 
 ### Advantages of Refactoring Code:
 
-Refactoring code allows you to improve the processing times of your code. Additionally, refactoring gives you an opportunity to simplify the code logic. A VBA macro with simpler logic and lower processing times will allow it to be applied to larger data sets.  A simpler logic also makes changes and corrections easier to make in the future. Lastly, refactoring your code can give a programmer an opportunity to find and correct bugs and errors in logic in the original code.
+Refactoring code allows you to improve the processing times of your code. Additionally, refactoring gives you an opportunity to simplify the code logic. A VBA macro with simpler logic and lower processing times will allow it to be applied to larger data sets. A simpler logic also makes changes and corrections easier to make in the future. Lastly, refactoring your code can give a programmer an opportunity to find and correct bugs and errors in logic in the original code.
 
 ### Disadvantages of Refactoring Code:
 
 The disadvantage of refactoring code is that it can take a lot of time and effort to rework the logic and an improved code is not guaranteed. If the code is long and complicated it can be risky to try and rework it, you could invest a lot of time into refactoring a code and break it along the way. 
 
-- How do these pros and cons apply to refactoring the original VBA scrpt?
+- How do these pros and cons apply to refactoring the original VBA script?
 
-Refactoring our original code was worth the effort because our new macro runs so much more quickly. Steve wants to use this code to analyze data for all of the stock market which will be a large data set. Our refactored code will be more capable of managing such a large data set in a reasonable amount of time without crashing.
+Refactoring our original code was worth the effort because our new macro runs so much more quickly. Steve wants to use this code to analyze data for all the stock market which will be a large data set. Our refactored code will be more capable of managing such a large data set in a reasonable amount of time without crashing.

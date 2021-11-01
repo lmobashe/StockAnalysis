@@ -1,12 +1,12 @@
 # StockAnalysis
 
-##Overview of Project
+## Overview of Project
 
 Steve has asked me to write a code to analyze stock data he provided me. Using VBA I wrote a set of macros that allowed Steve to compare the performance of various stocks based on the data provided. Steve wants to be able to perform a similar analysis on all stock market data. To accomadate so much data I am refactoring my original code to see if I can make the macros run more quickly.
 
-##Results
+## Results
 
-###Original Code
+### Original Code
 
 My Original code utilized 1 array to collect data for the 12 stocks provided in Steve's data set. The code sets an array of stock types, with each stock being an index in the array. It then loops through all rows of data, asks if the stock name matches the index in the current loop. The volume for each stock is added together, it finds the start price of the stock and the end price to find the total return for each stock. This code was successful in collecting comparative data, but consistently has a run time over 1 second, see code below:
 
@@ -150,7 +150,7 @@ The run time for the above code to analyze the 2018 data was 1.117188 seconds.
 ![Original_Code_2018_RunTime](https://github.com/lmobashe/StockAnalysis/blob/main/Resources/Original_Code_2018_RunTime.PNG)
 
 
-###Refactored Code
+### Refactored Code
 
 The refactored code utilizes 4 arrays to collect data for the 12 stocks provided in Steve's data set. The code sets one array of stock types with each stock being an index in the array, one array of total volumes per stock, one array of stock starting prices, and one array of stock ending prices. It sets a variable (tickerIndex) at zero, the index increases by one every time the loop cycles through. It then loops through all rows of data tracking the tickerIndex count which matches each index in the tickers array. The volume for each index is added together, it finds the start price of the index and the end price to find the total return for each index. This code was successful in collecting comparative data and increased the code processing speed by almost 600%, see code below:
 
@@ -304,15 +304,15 @@ The refactored run time for the 2018 data was 0.1875. This is an improved run ti
 
 ![Refactored_Code_2018_RunTime](https://github.com/lmobashe/StockAnalysis/blob/main/Resources/Refactored_Code_2018_with_RunTIme.PNG)
 
-##Summary
+## Summary
 
 - What are the advantages or disadvantages of refactoring code?
 
-###Advantages of Refactoring Code:
+### Advantages of Refactoring Code:
 
 Refactoring code allows you to improve the processing times of your code. Additionally, refactoring gives you an opportunity to simplify the code logic. A VBA macro with simpler logic and lower processing times will allow it to be applied to larger data sets.  A simpler logic also makes changes and corrections easier to make in the future. Lastly, refactoring your code can give a programmer an opportunity to find and correct bugs and errors in logic in the original code.
 
-###Disadvantages of Refactoring Code:
+### Disadvantages of Refactoring Code:
 
 The disadvantage of refactoring code is that it can take a lot of time and effort to rework the logic and an improved code is not guaranteed. If the code is long and complicated it can be risky to try and rework it, you could invest a lot of time into refactoring a code and break it along the way. 
 

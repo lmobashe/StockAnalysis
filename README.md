@@ -32,7 +32,7 @@ Sub AllStocksAnalysis()
     Cells(3, 3).Value = "Return"
     
     '2.  Initialize an array of all tickers.
-    Dim tickers(11) As String
+    Dim tickers(12) As String
         
     '2.  Initialize an array of all tickers.
     tickers(0) = "AY"
@@ -179,7 +179,7 @@ Sub AllStocksAnalysisRefactored()
     Cells(3, 3).Value = "Return"
 
     'Initialize array of all tickers
-    Dim tickers(11) As String
+    Dim tickers(12) As String
     
     tickers(0) = "AY"
     tickers(1) = "CSIQ"
@@ -206,11 +206,11 @@ Sub AllStocksAnalysisRefactored()
         tickerIndex = 0
 
     '1b) Create three output arrays
-            Dim tickerVolumes(11) As Long
+            Dim tickerVolumes(12) As Long
             
-            Dim tickerStartingPrices(11) As Single
+            Dim tickerStartingPrices(12) As Single
             
-            Dim tickerEndingPrices(11) As Single
+            Dim tickerEndingPrices(12) As Single
         
     
     ''2a) Create a for loop to initialize the tickerVolumes to zero.
